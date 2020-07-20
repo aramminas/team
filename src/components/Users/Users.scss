@@ -1,0 +1,31 @@
+.user-profile-content {
+  background-color: #212121;
+
+  & > div {
+    width: 100%;
+    margin: 0;
+  }
+
+  & .user-profile-title {
+    text-align: center;
+    margin: 100px 0 10px 0;
+  }
+
+  .user-shadows {
+    position: relative;
+    text-transform: uppercase;
+    text-shadow: -15px 5px 20px #ffffff;
+    color: #212121;
+    letter-spacing: -0.05em;
+    font-family: 'Anton', Arial, sans-serif;
+    -webkit-user-select: none;
+    user-select: none;
+    font-size: 120px;
+    transition: all 0.25s ease-out;
+
+    &:hover {
+      text-shadow: -16px 6px 15px #ced0d3;
+    }
+  }
+}
+

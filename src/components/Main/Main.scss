@@ -1,0 +1,26 @@
+@import "../../scss/varieables";
+.main-page-content {
+  background-image: url("/images/users/bg-main.png");
+  background-size: cover;
+  width: 100%;
+  height: 95vh;
+
+  & > div {
+    background: #00000085;
+    width: 100%;
+    height: 100%;
+    padding: 100px 150px;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  & .main-page-title {
+    color: #fff;
+    font-size: 60px;
+    line-height: 1em;
+    text-shadow: 0 1px 0 #94a9e1, 0 2px 0 #8a9edb, 0 3px 0 #92a1d5, 0 4px 0 #8a96d2,
+    0 5px 0 #8390cf, 0 6px 0 #7c8acd, 0 7px 0 #747fca, 0 8px 0 #6d7cc7, 0 0 5px rgba(152, 166, 231, 0.44),
+    0 -1px 3px rgba(3, 4, 7, 0.62), 0 9px 9px rgba(27, 40, 71, 0.95), 0 12px 12px rgba(44, 48, 79, 0.57),
+    0 15px 15px rgba(58, 111, 246, 0.45);
+  }
+}

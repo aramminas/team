@@ -1,0 +1,242 @@
+@import "../../../scss/varieables";
+
+.main-header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 5;
+  transition: transform 600ms ease 600ms;
+
+  &:hover {
+     & .header-slide {
+       transform: translateY(0);
+     }
+  }
+
+  & #header-inner {
+    vertical-align: middle;
+    width: 100%;
+    height: 56px;
+    overflow: hidden;
+    background: #000;
+  }
+
+  & .header-slide {
+    transform: translateY(-50%);
+    transition: transform 600ms ease;
+  }
+
+  & .header-inner-primary {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    height: 56px;
+  }
+
+  & .header-inner-primary .left {
+    left: 0;
+    padding: 12px 20px;
+
+    & a.active {
+      color: $mainColor;
+      transition: color 600ms ease;
+    }
+
+    & a:hover {
+      color: $hoverColor;
+    }
+  }
+}
+
+.header-inner-primary,
+.header-inner-primary li,
+.menu li a,
+.main-header #header-inner,
+ul li {
+  display: inline-block;
+  list-style: none;
+}
+
+.menu-primary-menu-container {
+  margin: 0 auto;
+  padding: 0;
+
+  & .menu li a {
+    color: $mainColor;
+    padding: 12px 20px;
+    text-decoration: none;
+    transition: color 600ms ease;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: .1rem;
+
+    &:hover {
+      color: $hoverColor;
+    }
+  }
+
+  & .menu li a.active {
+    color: $hoverColor;
+  }
+}
+
+.header-inner-primary .right {
+  right: 0;
+  top: 0;
+  padding: 12px 20px;
+
+  & .right a {
+    display: inline-block;
+    margin-left: 5px;
+  }
+
+  & .user-nav-menu-name {
+    color: $mainColor;
+    transition: color 600ms ease;
+    font-size: 17px;
+    margin-right: 8px;
+  }
+}
+
+.header-inner-secondary {
+  clear: both;
+  padding: 12px 0;
+  text-align: center;
+
+  & svg {
+    color: $mainColor;
+    font-size: 30px;
+  }
+}
+
+.site-logo {
+  display: flex;
+  align-items: center;
+
+  & figure.main-logo {
+    margin: 0;
+    & img {
+      height: 45px;
+    }
+  }
+
+  & span {
+    margin-left: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 13px;
+  }
+}
+
+.user-menu-btn {
+  & svg {
+    color: $mainColor;
+    transition: color 600ms ease;
+  }
+
+  &:hover {
+    & svg {
+      color: $hoverColor;
+    }
+  }
+}
+
+.user-menu-content {
+  & > div {
+    background-color: $backgroundFon;
+    margin-right: 15px;
+  }
+
+  & ul {
+    background-color: #1e1e1e;
+    padding: 10px;
+
+    & li , & li a {
+      font-size: 14px;
+      color: $mainColor;
+      transition: color 600ms ease;
+
+      &:hover {
+        color: $hoverColor;
+      }
+
+    }
+  }
+}
+
+/* Footer part */
+.main-footer {
+  position: relative;
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+  z-index: 3;
+  height: 230px;
+
+
+  & p {
+    align-items: center;
+    display: flex;
+
+    & a {
+      color: #fff;
+      border-bottom: 1px transparent;
+      text-decoration: none;
+      -webkit-transition: color 200ms ease;
+      transition: color 200ms ease;
+      margin: 0 5px;
+      font-size: 12px;
+
+      &:hover {
+        color: $mainColor;
+        transition: color 500ms ease;
+      }
+    }
+  }
+}
+
+.main-footer-content {
+  width: 100%;
+  height: 230px;
+  background: #111;
+  bottom: 0;
+}
+
+.footer-site-link {
+  z-index: 4;
+  position: absolute;
+  right: -135px;
+  top: 50%;
+  text-align: left;
+  -webkit-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+  -ms-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+  transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+  color: #4d4d4d;
+  text-transform: uppercase;
+  font-size: 12px;
+
+  & a {
+    text-decoration: none;
+    color: #4d4d4d;
+    transition: color 400ms ease;
+    font-size: 12px;
+
+    &:hover {
+      color: $mainColor;
+    }
+  }
+}
+
+.footer-contacts-links {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: auto;
+  text-transform: uppercase;
+}
+

@@ -1,0 +1,143 @@
+@import "../../scss/varieables";
+/* General */
+.sign-up-in-container {
+  background-image: url("/images/signUpIn/background.png");
+}
+
+.sign-up-in-content {
+  display: flex;
+  margin-top: 64px;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 8px;
+  background: conic-gradient(at 0% 30%, #c2c1c1b5 10%, #282828 30%, #8e8e8fcc 50%);
+
+  & .sign-up-in-avatar {
+    margin: 8px;
+    background-color: $mainColor;
+    width: 50px;
+    height: 50px;
+
+    & svg {
+      font-size: 30px;
+    }
+  }
+
+  & .sign-up-in-form {
+    width: 100%;
+    margin-top: 24px;
+  }
+
+  & .sign-up-in-submit-btn {
+    margin: 24px 0 16px;
+  }
+
+  & .sign-up-in-link {
+    text-decoration: none;
+    color: white;
+    font-size: 0.875rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 1.43;
+    letter-spacing: 0.01071em;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  & .input-styles {
+    & input, & label {
+      color: white;
+    }
+
+    & > div {
+      &:hover {
+        & fieldset {
+          border-color: $mainColor;
+        }
+      }
+    }
+
+    & fieldset {
+      border-color: white;
+    }
+
+    & p {
+      font-size: 11px
+    }
+    & input {
+      background-color: unset!important;
+    }
+  }
+
+  & .input-datepicker {
+
+    & > div {
+      &:before {
+        border-bottom-color: white;
+      }
+
+      &:hover{
+        &:before {
+          border-bottom-color: $mainColor;
+        }
+      }
+
+      & button {
+        color: white;
+      }
+    }
+  }
+
+  & .input-select {
+    & > div {
+      color: white;
+    }
+  }
+
+  & .file-btn {
+    height: 56px;
+    width: 100%;
+    font-size: 1rem;
+    color: #ffffff;
+    border-color: #ffffff;
+
+    & span {
+      font-size: 12px;
+    }
+
+    &:hover {
+      background-color: #ffffff1f;
+      border-color: $mainColor;
+      & svg {
+        color: $mainColor;
+      }
+    }
+  }
+
+  & .file-input {
+    display: none;
+  }
+
+  & .sex-label {
+    color: white;
+    font-size: 15px;
+  }
+}
+
+
+/* Sign Up part */
+.selected-avatar {
+  @include flexCenter;
+  & figure {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    & img {
+      height: 54px;
+    }
+  }
+}

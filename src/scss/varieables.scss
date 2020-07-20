@@ -1,0 +1,9 @@
+$mainColor: #0057ff;
+$hoverColor: white;
+$backgroundFon: black;
+
+@mixin flexCenter() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+@import "../../scss/varieables";
+
+@mixin p-title(){
+  margin: 40px auto;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 100px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #121212;
+  text-align: center;
+  letter-spacing: 5px;
+  text-shadow: 2px 7px 5px rgba(0,0,0,0.3),
+  0 -4px 10px rgba(255,255,255,0.3);
+}
+
+.teams-container {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+
+  .teams-main-content {
+    flex-grow : 1;
+  }
+}
+
+.teams-main-content {
+  height: 100%;
+  background-color: $mainColor;
+
+  & .teams-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    background-image: url("/images/teams/teams-bg.png");
+    background-position: bottom 230px right 50px;
+    background-repeat: no-repeat;
+    background-size: 30%;
+    background-attachment: fixed;
+  }
+
+  & .teams-empty-result {
+    @include flexCenter;
+  }
+
+  & .teams-wrapper > div {
+    width: 100%;
+    margin: 0;
+  }
+
+  & .teams-title {
+    h3 p {
+      @include p-title;
+    }
+  }
+}
+
+/* Teams View part */
+.teams-presentation-section {
+  & .team-member {
+    text-align: initial;
+    /* Image Part */
+    & figure {
+      float: left;
+      height: 6em;
+      margin: 1.5em;
+      width: 12em;
+      -webkit-transform: perspective(500px);
+      -webkit-transform-style: preserve-3d;
+      -webkit-transition: .5s;
+    }
+
+    & figure:hover {
+      -webkit-transform: perspective(500px) rotateX(90deg) translateY(-3em) translateZ(3em);
+    }
+
+    & img {
+      background-color: #222;
+      box-shadow: 0 20px 15px -10px hsla(0, 0%, 0%, .25);
+      display: block;
+      -webkit-transition: .5s;
+      height: 96px;
+      width: 192px;
+    }
+
+    & figure:hover img {
+      box-shadow: none;
+    }
+
+    & figcaption {
+      background-color: #222;
+      color: #fff;
+      padding: 1.5em;
+      -webkit-transform: rotateX(-90deg);
+      -webkit-transform-origin: 100% 0;
+      -webkit-transition: .5s;
+      height: 50px;
+    }
+
+    & figure:hover figcaption {
+      box-shadow: 0 20px 15px -10px hsla(0, 0%, 0%, .25);
+    }
+
+    & h3 {
+      font-weight: bold;
+    }
+
+    & h3, & p.member-last-name {
+      margin: 0;
+      background-color: transparent;
+      font-size: 15px;
+    }
+  }
+}
+
+/* Tree part */
+.team-members-tree {
+  margin-left: 100px;
+
+  & .teams-list-title {
+    @include p-title;
+    margin: 0;
+    font-size: 25px;
+    text-align: initial;
+  }
+
+  & ul.tree {
+    display: grid;
+    margin-bottom: 50px;
+  }
+
+  & ul.tree > li {
+    border-bottom: none;
+  }
+
+
+  & ul.tree > li > ul > li:last-child {
+    border-bottom: none;
+  }
+
+  & ul.tree > li > ul > li.empty:last-child {
+    border-bottom: 2px dotted silver;
+  }
+
+  & ul, & li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  & ul {
+    padding-left: 1em;
+  }
+
+  & li {
+    padding-left: 1em;
+    border: solid black;
+    border-width: 0 0 2px 2px;
+  }
+
+  & li.container {
+    border-bottom: 0;
+  }
+
+  & li.empty {
+    font-style: italic;
+    color: silver;
+    border-color: silver;
+  }
+
+  & li p {
+    margin: 0;
+    background: $mainColor;
+    position: relative;
+    top: 0.5em;
+    text-align: initial;
+    font-size: 22px;
+  }
+
+  & li ul {
+    border-top: 2px solid black;
+    margin-left: -1em;
+    padding-left: 2em;
+    display: grid;
+  }
+
+  & ul li:last-child ul {
+    border-left: 2px solid $mainColor;
+    margin-left: -18px;
+  }
+  & .member-ul {
+    border-top: none;
+
+    & li {
+      width: 300px;
+    }
+  }
+
+  & .team-members-container ul:nth-child(2) {
+    border-top: 2px solid black;
+  }
+}
+
+/* Loader part */
+div.loader-container {
+  margin-bottom: 50px;
+  @include flexCenter;
+
+  & > div {
+    width: 1000px;
+    height: 300px;
+    @include flexCenter;
+  }
+
+  & .loader-body {
+    & > span {
+      color: black;
+      font-weight: 600;
+    }
+  }
+}

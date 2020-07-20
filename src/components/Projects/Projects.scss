@@ -1,0 +1,110 @@
+@import "../../scss/varieables";
+$table-bg: #9d9d9d21;
+
+.projects-main-content {
+  & > div {
+    width: 100%;
+    margin: 0;
+  }
+
+  & .projects-title {
+    height: 240px;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 60px;
+    color: $mainColor;
+    margin: 0;
+    font-style: italic;
+    padding: 20px 40px;
+    text-align: center;
+
+    & p {
+      margin: 0;
+    }
+
+    & #ref-l {
+      transform: rotateX(210deg);
+      perspective: 200px;
+      -webkit-mask-image: -webkit-gradient(linear, right top, right bottom, from(transparent), color-stop(20%, transparent), to(rgba(0, 0, 0, 0.4)));
+    }
+  }
+}
+
+.projects-container {
+  background-image: linear-gradient(black, blue, black);
+}
+
+.projects-list-content {
+  margin-bottom: 50px;
+
+  & .projects-content {
+    & > div {
+      width: 1000px;
+      margin: auto;
+    }
+  }
+
+  & .projects-list-title {
+    color: $mainColor;
+    display: flex;
+    margin-left: 15px;
+
+    & h3 {
+      width: auto;
+      margin: 0;
+      @include flexCenter;
+      & svg {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  & .projects-list-table {
+    max-width: 1000px;
+
+    & table {
+      background-color: $table-bg;
+
+      & thead {
+        background-color: black;
+      }
+
+      & thead tr th {
+        font-weight: 600;
+        font-size: 17px;
+        color: white;
+      }
+
+      & tbody tr {
+        & th, & td {
+          color: #000000a1;
+        }
+        & th {
+          font-weight: 600;
+        }
+      }
+
+      & thead tr th,
+      & tbody tr th,
+      & tbody tr td {
+        border-bottom-color: black;
+      }
+    }
+
+    & .vote-project {
+      & svg:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+/* Loader Part */
+div.loader-container {
+  margin-bottom: 50px;
+  @include flexCenter;
+  & > div {
+    width: 1000px;
+    height: 300px;
+    @include flexCenter;
+  }
+}
