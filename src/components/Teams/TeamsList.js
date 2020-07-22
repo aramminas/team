@@ -25,8 +25,8 @@ function TeamsList(props) {
                                     { teams.map(item => (
                                         <li className="team-members-container" key={item.id}><p>{item.name}</p>
                                             <ul>
-                                                <li><p>{item.topic}</p></li>
-                                                <li><p>{item.project}</p></li>
+                                                <li><p><span className={"info-title"}>{lang.topic}: </span>{item.topic}</p></li>
+                                                <li><p><span className={"info-title"}>{lang.project}: </span>{item.project}</p></li>
                                                 { item.members.length > 0 ?
                                                     <li className="team-members-container"><p>{lang.members}</p>
                                                         {item.members.map((member, index) => (

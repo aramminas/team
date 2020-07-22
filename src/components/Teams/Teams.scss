@@ -198,6 +198,11 @@
   & .team-members-container ul:nth-child(2) {
     border-top: 2px solid black;
   }
+
+  & .info-title {
+    color: black;
+    font-weight: 600;
+  }
 }
 
 /* Loader part */

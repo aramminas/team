@@ -114,5 +114,7 @@
   "members": "Members",
   "no_participants": "No participants",
   "list_is_empty": "List is empty",
-  "empty_result": "Empty result."
+  "empty_result": "Empty result.",
+  "project": "Project",
+  "topic": "Topic"
 }
