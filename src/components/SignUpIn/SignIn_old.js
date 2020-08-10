@@ -9,6 +9,7 @@ import {Animated} from "react-animated-css"
 import {useToasts} from "react-toast-notifications"
 import Layout from '../../hoc/layout/Layout'
 import Copyright from '../General/Copyright'
+import reg from '../../constants'
 import API from '../../store/api/API'
 import './SignUpIn.scss'
 
@@ -17,9 +18,16 @@ const initUserData = {
     password: "",
 }
 
+const initValidator = {
+    email: false,
+    password: false,
+}
+
+
 function SignIn(props) {
     const {addToast} = useToasts()
     const [userData, setUserData] = useState(initUserData)
+    const [validator, setValidator] = useState(initValidator)
     const [redirectTo, setRedirectTo]= useState(false)
     const {lang} = props
 
@@ -32,11 +40,35 @@ function SignIn(props) {
                 [name]: value,
             }
         })
+
+        switch (name) {
+            case "email":
+                !reg.email_reg.test(value) ?
+                    setValidator(prevState => {return {...prevState, [name]: true}}) :
+                    setValidator(prevState => {return {...prevState, [name]: false}})
+                break
+            case "password":
+                !reg.pass_reg.test(value) ?
+                    setValidator(prevState => {return {...prevState, [name]: true}}) :
+                    setValidator(prevState => {return {...prevState, [name]: false}})
+                break
+            default:
+                return validator
+        }
     }
 
 
     const handleSubmit = (ev) => {
         ev.preventDefault()
+        let {email, password} = validator
+        if(email || password){
+            addToast(lang.all_fields_required, {
+                appearance: 'error',
+                autoDismiss: true
+            })
+            return false
+        }
+
         API.signInUser({...userData}).then(res => {
             if(res.token !== "" && res.firstName !== ""){
                 props.setUserDataToStore({...res})
@@ -77,8 +109,10 @@ function SignIn(props) {
                                         label={lang.email_address}
                                         name="email"
                                         autoComplete="email"
+                                        error={validator.email}
                                         value={userData.email}
                                         onChange={(ev)=>handleChangeData(ev)}
+                                        helperText={validator.email && "Incorrect entry."}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
@@ -91,8 +125,10 @@ function SignIn(props) {
                                         label={lang.password}
                                         type="password"
                                         autoComplete="current-password"
+                                        error={validator.password}
                                         value={userData.password}
                                         onChange={(ev)=>handleChangeData(ev)}
+                                        helperText={validator.password && "Incorrect entry."}
                                     />
                                 </Grid>
                             </Grid>
