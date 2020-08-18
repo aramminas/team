@@ -46,7 +46,7 @@ function UserParameters(props) {
     const [editDat, setEditData] = useState(false)
     const [imageData, setImageData] = useState(initImage)
     const [_loader, _setLoader] = useState(false)
-    const {lang, user, companies, updateUserChange} = props
+    const {lang, user, companies, updateUserChange, userEdit} = props
 
     useEffect(function () {
         setUserData({...user, password: ""})
@@ -55,6 +55,7 @@ function UserParameters(props) {
     const openEdit = (e) => {
         e.preventDefault()
         setEditData(!editDat)
+        userEdit()
     }
 
     const handleSubmit = (ev) => {
@@ -76,7 +77,7 @@ function UserParameters(props) {
             })
             return false
         }
-
+        delete userData.edit;
         if(!imageData.file){
             updateUserData({...userData})
         }else {
@@ -108,12 +109,14 @@ function UserParameters(props) {
             }
             setEditData(!editDat)
             _setLoader(false)
+            userEdit()
         }).catch(error => {
             _setLoader(false)
             addToast(error.message, {
                 appearance: 'error',
                 autoDismiss: true
             })
+            userEdit()
         })
     }
 
@@ -211,8 +214,10 @@ function UserParameters(props) {
             return {...prevState, sex: type}})
     }
 
+    const style = user.edit ?  "": "white"
+
     return (
-        <div className={"content-user-parameters"}>
+        <div className={`content-user-parameters ${style}`}>
             <form className={`${editDat ? "green-color" : "blue-color"}`} onSubmit={(ev)=>handleSubmit(ev)}>
                 <div className="segment main-segment">
                     <h1>{lang.personal_data}</h1>

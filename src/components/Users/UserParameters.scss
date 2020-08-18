@@ -4,7 +4,10 @@ $color-green: #22ae00;
 $color-blue: #0057ff;
 $color-bg: #212121;
 $color-shadow: #000000;
-$color-white: #262626;
+$color-dark: #262626;
+$color-white: #FFF;
+$color-shadow-white: #BABECC;
+$color-bg-white: #EBECF0;
 
 .content-user-parameters {
   background-color:$color-bg;
@@ -17,7 +20,7 @@ $color-white: #262626;
 
   & div, & p {
     color: $color-shadow;
-    text-shadow: 1px 1px 1px $color-white;
+    text-shadow: 1px 1px 1px $color-dark;
   }
 
   & form {
@@ -38,7 +41,7 @@ $color-white: #262626;
     border-radius: $ruler*20;
     padding: $ruler;
     background-color:$color-bg;
-    text-shadow: 1px 1px 0 $color-white;
+    text-shadow: 1px 1px 0 $color-dark;
   }
 
   & label {
@@ -49,7 +52,7 @@ $color-white: #262626;
 
   & input {
     margin-right: $ruler/2;
-    box-shadow:  inset 2px 2px 5px $color-shadow, inset -5px -5px 10px $color-white;
+    box-shadow:  inset 2px 2px 5px $color-shadow, inset -5px -5px 10px $color-dark;
     width: 100%;
     box-sizing: border-box;
     transition: all 0.2s ease-in-out;
@@ -57,23 +60,23 @@ $color-white: #262626;
     -webkit-appearance: none;
 
     &:focus {
-      box-shadow:  inset 1px 1px 2px $color-shadow, inset -1px -1px 2px $color-white;
+      box-shadow:  inset 1px 1px 2px $color-shadow, inset -1px -1px 2px $color-dark;
     }
   }
 
   & button, & .icon-user-avatar {
     color:#61677C;
-    box-shadow: -5px -5px 20px $color-white,  5px 5px 20px $color-shadow;
+    box-shadow: -5px -5px 20px $color-dark,  5px 5px 20px $color-shadow;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
     font-weight: 600;
 
     &:hover {
-      box-shadow: -2px -2px 5px $color-white, 2px 2px 5px $color-shadow;
+      box-shadow: -2px -2px 5px $color-dark, 2px 2px 5px $color-shadow;
     }
 
     &:active {
-      box-shadow: inset 1px 1px 2px $color-shadow, inset -1px -1px 2px $color-white;
+      box-shadow: inset 1px 1px 2px $color-shadow, inset -1px -1px 2px $color-dark;
     }
 
     .icon {
@@ -262,5 +265,46 @@ $color-white: #262626;
 
   & .user-update-loader {
     margin: 0 10px;
+  }
+
+  &.white {
+    background-color:$color-bg-white;
+    & button, & input {
+      background-color: $color-bg-white;
+      text-shadow: 1px 1px 0 $color-white;
+    }
+    & div, & p {
+      color: $color-shadow-white;
+      text-shadow: 1px 1px 1px $color-white;
+    }
+
+
+    & button, & .icon-user-avatar {
+      color: red;
+      box-shadow: -5px -5px 20px $color-white, 5px 5px 20px $color-shadow-white;
+
+      &:hover {
+        box-shadow: -2px -2px 5px $color-white, 2px 2px 5px $color-shadow-white;
+      }
+
+      &:active {
+        box-shadow: inset 1px 1px 2px $color-shadow-white, inset -1px -1px 2px $color-white;
+      }
+    }
+
+    & .blue-color {
+      input {
+        color: #4b4b4b;
+      }
+    }
+  }
+
+
+  &.white input {
+    box-shadow:  inset 2px 2px 5px $color-shadow-white, inset -5px -5px 10px $color-white;
+
+    &:focus {
+      box-shadow:  inset 1px 1px 2px $color-shadow-white, inset -1px -1px 2px $color-white;
+    }
   }
 }

@@ -1,12 +1,27 @@
 @import "../../scss/varieables";
 $table-bg: #9d9d9d21;
 
+@mixin p-title(){
+  margin: 40px auto;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 100px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #121212;
+  text-align: center;
+  letter-spacing: 5px;
+  text-shadow: 2px 7px 5px rgba(0,0,0,0.3),
+  0 -4px 10px rgba(255,255,255,0.3);
+}
+
 .projects-main-content {
+  background-color: $mainColor;
+
   & > div {
     width: 100%;
     margin: 0;
   }
-
+/*
   & .projects-title {
     height: 240px;
     font-family: 'Noto Sans', sans-serif;
@@ -27,10 +42,17 @@ $table-bg: #9d9d9d21;
       -webkit-mask-image: -webkit-gradient(linear, right top, right bottom, from(transparent), color-stop(20%, transparent), to(rgba(0, 0, 0, 0.4)));
     }
   }
+*/
+
+  & .projects-title {
+    h3 p {
+      @include p-title;
+    }
+  }
 }
 
 .projects-container {
-  background-image: linear-gradient(black, blue, black);
+  //background-image: linear-gradient(black, blue, black);
 }
 
 .projects-list-content {

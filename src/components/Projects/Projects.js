@@ -77,8 +77,9 @@ function Projects(props) {
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
                         <div className={"projects-title"}>
-                            <p>{lang.projects}</p>
-                            <p id="ref-l">{lang.projects}</p>
+                            {/*<p>{lang.projects}</p>*/}
+                            {/*<p id="ref-l">{lang.projects}</p>*/}
+                            <h3><p>{lang.projects}</p></h3>
                         </div>
                     </Grid>
                     {projects.length > 0 ?
