@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react'
+import {set_projects_data} from "../../store/actions/projectsAction";
+import {connect, useSelector} from "react-redux";
 import {Grid, Paper} from '@material-ui/core'
 import {makeStyles} from '@material-ui/core/styles'
 import {useToasts} from 'react-toast-notifications'
@@ -24,10 +26,16 @@ function Projects(props) {
     const {addToast} = useToasts()
     const classes = useStyles()
     const [projects, setProjects] = useState([])
+    const {projects: projectData} = useSelector(state => state)
+
     const {lang} = props
 
     useEffect(function () {
-        getProjects()
+        if(projectData.length > 0 ){
+            setProjects([...projectData])
+        }else{
+            getProjects()
+        }
     }, [])
 
     const getProjects = () => {
@@ -36,6 +44,7 @@ function Projects(props) {
             API.getProjects(token).then(res => {
                 if(res && res.length > 0){
                     setProjects([...res])
+                    props.setProjectsData([...res])
                 }else{
                     addToast(lang.project_list_empty, {
                         appearance: 'warning', autoDismiss: true
@@ -104,4 +113,16 @@ function Projects(props) {
     )
 }
 
-export default Layout(Projects)
+const mapStateToProps = state => {
+    return {
+        ...state
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        setProjectsData: (data) => {dispatch(set_projects_data(data))},
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Layout(Projects))

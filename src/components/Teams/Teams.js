@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react'
+import {set_teams_data} from "../../store/actions/teamsAction";
+import {connect, useSelector} from "react-redux";
 import {makeStyles} from '@material-ui/core/styles'
 import {Grid, Paper} from '@material-ui/core'
 import {DeleteOutline} from '@material-ui/icons'
@@ -18,13 +20,19 @@ const useStyles = makeStyles(() => ({
 function Teams(props) {
     const classes = useStyles()
     const {addToast} = useToasts()
+    const {teams: teamsData} = useSelector(state => state)
     const [teams, setTeams] = useState([])
     const [emptyData, setEmptyData] = useState(false)
     const [showLoader, setShowLoader] = useState(true)
     const {lang} = props
 
     useEffect(function () {
-        getTeams()
+        if(teamsData.length > 0 ){
+            setTeams([...teamsData])
+            setShowLoader(false)
+        }else{
+            getTeams()
+        }
     }, [])
 
     const getTeams = () => {
@@ -34,6 +42,7 @@ function Teams(props) {
                 if(res && res.length > 0){
                     setTeams(res)
                     setShowLoader(false)
+                    props.setTeamsData([...res])
                 }else{
                     addToast(lang.teams_list_empty, {
                         appearance: 'warning', autoDismiss: true
@@ -87,4 +96,16 @@ function Teams(props) {
     )
 }
 
-export default Layout(Teams)
+const mapStateToProps = state => {
+    return {
+        ...state
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        setTeamsData: (data) => {dispatch(set_teams_data(data))},
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Layout(Teams))

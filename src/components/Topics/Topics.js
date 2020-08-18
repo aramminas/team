@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react'
+import {set_topics_data} from "../../store/actions/topicsAction";
+import {connect, useSelector} from "react-redux";
 import {Grid, Paper} from '@material-ui/core'
 import {AddCircleTwoTone, MenuBookTwoTone} from '@material-ui/icons'
 import {makeStyles} from '@material-ui/core/styles'
@@ -20,6 +22,7 @@ const useStyles = makeStyles(() => ({
 function Topics(props) {
     const classes = useStyles()
     const {addToast} = useToasts()
+    const {topics: topicsData} = useSelector(state => state)
     const [topics, setTopics] = useState([])
     const [openNewTopic, setOpenNewTopic] = useState(false)
     const [showLoader, setShowLoader] = useState(true)
@@ -27,7 +30,12 @@ function Topics(props) {
     const {lang} = props
 
     useEffect(function () {
-        getTopics()
+        if(topicsData.length > 0 ){
+            setTopics([...topicsData])
+            setShowLoader(false)
+        }else{
+            getTopics()
+        }
     }, [])
 
     const handleOpenNewTopic = () => {
@@ -44,6 +52,7 @@ function Topics(props) {
             API.getTopics(token).then(res => {
                 if(res && res.length > 0){
                     setTopics(res)
+                    props.setTopicsData([...res])
                 }else{
                     addToast(lang.topics_list_empty, {
                         appearance: 'warning', autoDismiss: true
@@ -179,4 +188,16 @@ function Topics(props) {
     )
 }
 
-export default Layout(Topics)
+const mapStateToProps = state => {
+    return {
+        ...state
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        setTopicsData: (data) => {dispatch(set_topics_data(data))},
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Layout(Topics))

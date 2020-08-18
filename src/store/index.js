@@ -6,11 +6,17 @@ import thunk from "redux-thunk"
 import languageReducer from "./reducers/languageReducer"
 import homeReducer from "./reducers/homeReducer"
 import userReducer from "./reducers/userReducer"
+import projectsReducer from "./reducers/projectsReducer"
+import teamsReducer from "./reducers/teamsReducer"
+import topicsReducer from "./reducers/topicsReducer"
 
 const AllReducers = combineReducers({
     language: languageReducer,
     home: homeReducer,
     user: userReducer,
+    projects: projectsReducer,
+    teams: teamsReducer,
+    topics: topicsReducer,
 })
 
 const InitialState = {}
