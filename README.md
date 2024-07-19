@@ -6,7 +6,7 @@
 
 ### NPM packages
 
-### /* Main packages */
+### /_ Main packages _/
 
 `npm install redux --save --save-exact`
 
@@ -22,8 +22,7 @@
 
 `npm install axios`
 
-
-### /* Additional packages */
+### /_ Additional packages _/
 
 `npm install @material-ui/core`
 
